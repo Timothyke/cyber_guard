@@ -24,7 +24,7 @@ Clone the repository (if you haven’t already):
 
 bash
 Copy code
-git clone https://github.com/yourusername/network-guard.git
+git clone https://github.com/Timothyke/cyber_guard.git
 cd network-guard
 Create a virtual environment (optional but recommended):
 
