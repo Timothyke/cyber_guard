@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Scan Results</title>
+</head>
+<body>
+    <h1>Network Scan</h1>
+    
+    <!-- Form to enter IP address -->
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="ip" placeholder="Enter IP address" required>
+        <button type="submit">Scan</button>
+    </form>
+    
+    <!-- Display results if any -->
+    {% if results %}
+        <h2>Scan Results:</h2>
+        <ul>
+            {% for host, ports in results.items %}
+                <li>
+                    <strong>Host:</strong> {{ host }}
+                    <ul>
+                        {% for port, details in ports.items %}
+                            <li>Port: {{ port }} - Status: {{ details['state'] }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results to display.</p>
+    {% endif %}
+</body>
+</html>
